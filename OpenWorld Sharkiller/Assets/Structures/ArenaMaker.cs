@@ -12,21 +12,20 @@ public class Cellarena : MonoBehaviour //cellarena spawner
     float casecompteury = 0;
 
     float casechance; // chance qu'une case soit skip
-    float caseoffset; // decalage aleatoire
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
     }
 
     // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        if (Input.GetKey(KeyCode.E)) 
-        {
-            for(int i = 0; i < 100; i++)
+
+            
+        for(int i = 0; i < 100; i++)
             {
                 rotatedbord = Instantiate(smallborder, new Vector3(transform.right.x + i, transform.up.y, transform.forward.z - 0.5f), Quaternion.identity);//small outer border z start
                 rotatedbord.transform.Rotate(new Vector3(0, 90, 0));
@@ -56,7 +55,7 @@ public class Cellarena : MonoBehaviour //cellarena spawner
                     {
                         casechance = Random.Range(0, 10); // 10% de chance
                         
-                        if (casechance != 0) { Instantiate(Case, new Vector3(transform.right.x + 12 + i * 0.8f + 0.5f, Mathf.PerlinNoise(i*0.005f, j*0.005f)*(transform.up.y + 1.8f )+1.8f , transform.forward.z + 12 + j * 0.8f), Quaternion.identity); }//ajout d'une case 10% chance de ne pas le faire
+                        if (casechance != 0) { Instantiate(Case, new Vector3(transform.right.x + 12 + i * 0.8f + 0.5f, transform.forward.y + 2.8f , transform.forward.z + 12 + j * 0.8f), Quaternion.identity); }//ajout d'une case 10% chance de ne pas le faire
 
                     }
                     casecompteury += 1;
@@ -77,7 +76,7 @@ public class Cellarena : MonoBehaviour //cellarena spawner
                 
 
 
-            }
+           
         }
     }
 }
