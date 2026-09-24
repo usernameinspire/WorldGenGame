@@ -32,7 +32,7 @@ public class PlayerDash : MonoBehaviour
         canDash = false;
         isDashing = true;
 
-        // Récupère les entrées de déplacement (Z, Q, S, D ou Fleches)
+        // Récupère les entrées de déplacement (Z, Q, S, D ou Flèches)
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
@@ -45,17 +45,14 @@ public class PlayerDash : MonoBehaviour
             direction = transform.forward;
         }
 
-        // Sauvegarde la vitesse actuelle pour la restaurer après le dash (optionnel)
-        Vector3 previousVelocity = rb.linearVelocity;
-
         // Applique l'impulsion du Dash
         rb.linearVelocity = direction * dashForce;
 
         // Attend la fin du dash
         yield return new WaitForSeconds(dashDuration);
 
-        // Remet la vitesse d'origine (ou zéro pour arrêter net)
-        rb.linearVelocity = Vector3.zero;
+        // Réinitialise uniquement la vitesse horizontale (X, Z) tout en préservant le saut/gravité (Y)
+        rb.linearVelocity = new Vector3(0f, rb.linearVelocity.y, 0f);
         isDashing = false;
 
         // Attend le temps de recharge (Cooldown)
