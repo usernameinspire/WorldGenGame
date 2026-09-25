@@ -30,8 +30,8 @@ namespace StarterAssets
 
         [Header("Player Grounded")]
         public bool Grounded = true;
-        public float GroundedOffset = -0.14f;
-        public float GroundedRadius = 0.28f;
+        public float GroundedOffset = 10f;
+        public float GroundedRadius = 28f;
         public LayerMask GroundLayers;
 
         [Header("Cinemachine")]

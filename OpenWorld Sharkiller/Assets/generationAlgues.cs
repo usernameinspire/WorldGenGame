@@ -15,7 +15,7 @@ public class generationAlgues : MonoBehaviour
                 if (rng == 0)
                 {
                     // Multiplié par 4 pour correspondre à l'espacement des cubes
-                    Vector3 position = new Vector3((i * 4) + 2, 1, (j * 4) + 2);
+                    Vector3 position = new Vector3((i * 4*2) + 2, 1, (j * 4*2) + 2);
                     Instantiate(Algues, position, Quaternion.identity);
                 }
             }
